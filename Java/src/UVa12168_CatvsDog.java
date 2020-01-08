@@ -17,7 +17,7 @@ public class UVa12168_CatvsDog{
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		PrintWriter out = new PrintWriter(System.out);
-		int cases = Integer.parseInt(in.readLine()), gatos, perros, v;
+		int cases = Integer.parseInt(in.readLine()), v;
 		StringTokenizer st;
 		String s;
 		for (int i = 0; i < g.length; i++)
@@ -26,8 +26,6 @@ public class UVa12168_CatvsDog{
 		for (int c = 0; c < cases; c++) {
 			cn = dn = 0;
 			st = new StringTokenizer(in.readLine());
-			gatos = Integer.parseInt(st.nextToken());
-			perros = Integer.parseInt(st.nextToken());
 			v = Integer.parseInt(st.nextToken());
 
 			for (int i = 0; i < v; i++) {
