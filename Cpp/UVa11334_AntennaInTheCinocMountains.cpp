@@ -1,5 +1,5 @@
 // Referencias: http://www.illusioncatalyst.com/notes_files/mathematics/line_cone_intersection.php
-// WRONG ANSWER
+// Accepted
 // UVa11334_AntennaInTheCinocMountains
 
 
@@ -116,7 +116,7 @@ double pointInSegment(pt &line_point1, pt &line_point2,
     return cmp(d1 + d2, dr) == 0;
 }
 
-bool pointInsideCone(Cone &c, pt &a) {
+bool pointInsideCone(Cone &c, pt &a) { // Solo para conos con base en el plano xy
     long double dx = a.x - c.H.x;
     long double dy = a.y - c.H.y;
     long double d = sqrt(dx * dx + dy * dy);
@@ -140,10 +140,8 @@ bool coneSegmentIntersection(Cone cone, pt A, pt B) {
     double troot = bt * bt - 4 * at * ct;
 
 
-//   cout << "root -> " << cmp(troot,0) << endl;
-
+//No hay intersección
     if (cmp(troot, 0) < 0) {
-//        cout<<"Caso 0"<<endl;
         return false;
     }
 
@@ -169,14 +167,13 @@ bool coneSegmentIntersection(Cone cone, pt A, pt B) {
     }
 
 
-    pt nv = v/sqrt(ds(v));
-    double cosss = h/sqrt(h*h+cone.r*cone.r);
+    pt nv = v / sqrt(ds(v));
+    double cosss = h / sqrt(h * h + cone.r * cone.r);
 
-    if(cmp(nv^nh,cosss) == 0||cmp(troot, 0) == 0) {
+    if (cmp(nv ^ nh, cosss) == 0 || cmp(troot, 0) == 0) {
 //        cout << "caso 3A " << endl;
         return false;
-    }
-    else{
+    } else {
 //        cout << "caso 3B " << endl;
         double sol = -bt / (2 * at);
         pt inter1 = A + (v * sol);
@@ -219,7 +216,7 @@ int main() {
             }
         }
 
-        cout << (i == k && a != b ? "Yes" : "No") << "\n";
+        cout << (i == k && a != b && (a.z != 0 && b.z != 0) ? "Yes" : "No") << "\n";
 
     }
 
